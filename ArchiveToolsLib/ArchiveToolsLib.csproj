@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WArchiveTools</RootNamespace>
     <AssemblyName>WArchiveTools</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -51,7 +52,7 @@
     <Compile Include="Compression\Yaz0Encoder.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\GameFormatReader\GameFormatReader.csproj">
+    <ProjectReference Include="..\..\GameFormatReader\GameFormatReader.csproj" AdditionalProperties="TargetFramework=TargetFramework=net48">
       <Project>{afce536d-92ff-4ee5-8536-731d2cd5fbca}</Project>
       <Name>GameFormatReader</Name>
     </ProjectReference>
