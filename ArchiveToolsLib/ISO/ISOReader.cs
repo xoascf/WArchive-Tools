@@ -1,6 +1,6 @@
 ﻿using GameFormatReader.Common;
-using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using WArchiveTools.FileSystem;
 
 namespace WArchiveTools.ISOs
@@ -102,7 +102,7 @@ namespace WArchiveTools.ISOs
             {
                 VirtualFilesystemDirectory dir = new VirtualFilesystemDirectory(curEntry.RelativeFileName);
 
-                Console.WriteLine("Created directory: " + dir.Name);
+                Debug.WriteLine("Created directory: " + dir.Name);
 
                 while (curIndex < curEntry.FileSizeNextDirIndex - 1)
                 {
@@ -111,7 +111,7 @@ namespace WArchiveTools.ISOs
 
                 parentDir.Children.Add(dir);
 
-                Console.WriteLine("Leaving directory: " + dir.Name);
+                Debug.WriteLine("Leaving directory: " + dir.Name);
 
                 return curIndex;
             }
@@ -142,7 +142,7 @@ namespace WArchiveTools.ISOs
                 file = new VirtualFilesystemFile(fileNameAndExtension[0], "." + fileNameAndExtension[1], data);
             }
 
-            Console.WriteLine("Created file: " + file.Name);
+            Debug.WriteLine("Created file: " + file.Name);
 
             return file;
         }
