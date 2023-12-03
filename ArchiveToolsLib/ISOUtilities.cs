@@ -15,16 +15,22 @@ namespace WArchiveTools
         /// <returns></returns>
         public static VirtualFilesystemDirectory LoadISO(string filePath)
         {
-            VirtualFilesystemDirectory rootDir;
-
             using (FileStream stream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
             {
-                EndianBinaryReader reader = new EndianBinaryReader(stream, Endian.Big);
-                ISO iso = new ISO();
-                rootDir = iso.LoadISO(reader);
+                return LoadISO(stream);
             }
+        }
 
-            return rootDir;
+        /// <summary>
+        /// Returns the root of the given ISO file in the form of a VirtualFilesystemDirectory.
+        /// </summary>
+        /// <param name="stream">Stream containing the ISO data</param>
+        /// <returns></returns>
+        public static VirtualFilesystemDirectory LoadISO(Stream stream)
+        {
+            EndianBinaryReader reader = new EndianBinaryReader(stream, Endian.Big);
+            ISO iso = new ISO();
+            return iso.LoadISO(reader);
         }
 
         /// <summary>
